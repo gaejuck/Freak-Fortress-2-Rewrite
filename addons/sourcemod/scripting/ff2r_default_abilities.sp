@@ -1393,13 +1393,13 @@ public void FF2R_OnAbility(int client, const char[] ability, AbilityData cfg)
 
 		int victims;
 		int[] victim = new int[MaxClients - 1];
-		SetVariantString(file);
 		for(int target = 1; target <= MaxClients; target++)
 		{
 			if(target != client && IsClientInGame(target) && IsPlayerAlive(target) && GetClientTeam(target) != team)
 			{
 				delete OverlayTimer[target];
-
+				
+				SetVariantString(file);
 				AcceptEntityInput(target, "SetScriptOverlayMaterial", target, target);
 				OverlayTimer[target] = CreateTimer(duration, Timer_RemoveOverlay, target);
 				
@@ -2173,13 +2173,13 @@ void Rage_TradeSpam(int client, ConfigData cfg, const char[] ability, int phase)
 
 	char temp[128];
 	FormatEx(temp, sizeof(temp), "%s%d", file, phase);
-	SetVariantString(temp);
 	for(int target = 1; target <= MaxClients; target++)
 	{
 		if(target != client && IsClientInGame(target) && IsPlayerAlive(target) && GetClientTeam(target) != team)
 		{
 			delete OverlayTimer[target];
 
+			SetVariantString(temp);
 			AcceptEntityInput(target, "SetScriptOverlayMaterial", target, target);
 			
 			OverlayTimer[target] = CreateTimer(duration, Timer_RemoveOverlay, target);
@@ -3008,7 +3008,7 @@ public Action Timer_RemoveOverlay(Handle timer, int client)
 	
 	if(IsClientInGame(client))
 	{
-		SetVariantString("");
+		SetVariantString(NULL_STRING);
 		AcceptEntityInput(client, "SetScriptOverlayMaterial", client, client);
 	}
 	return Plugin_Continue;

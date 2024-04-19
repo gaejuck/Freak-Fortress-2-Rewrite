@@ -3153,13 +3153,14 @@ bool Bosses_PlaySound(int boss, const int[] clients, int numClients, const char[
 	if(sound.Overlay[0])
 	{
 		sound.Duration += GetEngineTime();
-		SetVariantString(sound.Overlay);
-
+		
 		for(int i; i < numClients; i++)
 		{
 			if(clients[i] != boss && FileNet_HasFile(clients[i], sound.OverlayFileNet))
 			{
 				Client(clients[i]).OverlayFor = sound.Duration;
+				
+				SetVariantString(sound.Overlay);
 				AcceptEntityInput(clients[i], "SetScriptOverlayMaterial", clients[i], clients[i]);
 			}
 		}
