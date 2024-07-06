@@ -2580,7 +2580,7 @@ void Rage_CloneAttack(int client, ConfigData cfg)
 		{
 			for(int target = 1; target <= MaxClients; target++)
 			{
-				if(client == target || !IsClientInGame(target) || IsPlayerAlive(target) || GetClientTeam(target) != team)
+				if(client == target || !IsClientInGame(target) || IsPlayerAlive(target) || GetClientTeam(target) != team || IsClientSourceTV(target) || IsClientReplay(target))
 					continue;
 
 				if(FF2R_GetBossData(target))
@@ -2603,7 +2603,7 @@ void Rage_CloneAttack(int client, ConfigData cfg)
 		{
 			for(int target = 1; target <= MaxClients; target++)
 			{
-				if(client == target || !IsClientInGame(target) || IsPlayerAlive(target) || GetClientTeam(target) == team)
+				if(client == target || !IsClientInGame(target) || IsPlayerAlive(target) || GetClientTeam(target) == team || IsClientSourceTV(target) || IsClientReplay(target))
 					continue;
 
 				if(FF2R_GetBossData(target))
@@ -2625,7 +2625,7 @@ void Rage_CloneAttack(int client, ConfigData cfg)
 			{
 				for(int target = 1; target <= MaxClients; target++)
 				{
-					if(client == target || !IsClientInGame(target) || IsPlayerAlive(target) || GetClientTeam(target) <= view_as<int>(TFTeam_Spectator))
+					if(client == target || !IsClientInGame(target) || IsPlayerAlive(target) || GetClientTeam(target) <= view_as<int>(TFTeam_Spectator) || IsClientSourceTV(target) || IsClientReplay(target))
 						continue;
 
 					if(FF2R_GetBossData(target))
