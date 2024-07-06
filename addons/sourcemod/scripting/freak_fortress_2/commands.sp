@@ -275,7 +275,7 @@ static Action SwapTeam(int client, int wantTeam)
 		
 		if(Cvar[AggressiveSwap].BoolValue)
 		{
-			DataPack pack = new DataPack();
+			DataPack pack;
 			CreateDataTimer(0.2, Command_AggressiveSwap, pack, TIMER_FLAG_NO_MAPCHANGE|TIMER_REPEAT);
 			pack.WriteCell(GetClientUserId(client));
 			pack.WriteCell(newTeam);
