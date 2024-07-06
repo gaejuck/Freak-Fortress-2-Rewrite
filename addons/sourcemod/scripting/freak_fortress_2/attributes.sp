@@ -307,7 +307,7 @@ void Attributes_OnHitBoss(int attacker, int victim, int inflictor, float fdamage
 	
 	if(Attributes_FindOnPlayer(attacker, 418) > 0.0)	// boost on damage
 	{
-		DataPack pack = new DataPack();
+		DataPack pack;
 		if(Enabled)
 		{
 			CreateDataTimer(0.1, Attributes_BoostDrainStack, pack, TIMER_FLAG_NO_MAPCHANGE|TIMER_REPEAT);
