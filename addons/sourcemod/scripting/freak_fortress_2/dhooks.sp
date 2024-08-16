@@ -249,9 +249,11 @@ static void DHook_RoundSetup(Event event, const char[] name, bool dontBroadcast)
 	}
 }
 
-static MRESReturn DHook_CanPickupDroppedWeaponPre(int client, DHookReturn ret, DHookParam param)
+static MRESReturn DHook_CanPickupDroppedWeaponPre(DHookReturn ret, DHookParam param)
 {
-	switch(Forward_OnPickupDroppedWeapon(client, param.Get(1)))
+	int client = param.Get(1);
+
+	switch(Forward_OnPickupDroppedWeapon(client, param.Get(2)))
 	{
 		case Plugin_Continue:
 		{
