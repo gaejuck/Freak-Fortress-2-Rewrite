@@ -583,9 +583,9 @@ stock void Weapons_OnHitBossPre(int attacker, int victim, float &damage, int wea
 					}
 				}
 			}
+
+			delete kv;
 		}
-		
-		delete kv;
 		
 		if(GetEntityClassname(weapon, buffer, sizeof(buffer)))
 		{
